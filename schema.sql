@@ -23,3 +23,13 @@ CREATE TABLE IF NOT EXISTS
     email TEXT UNIQUE,
     senha TEXT
   );
+DROP TABLE
+  IF EXISTS login_admin;
+
+CREATE TABLE IF NOT EXISTS
+  login_admin (
+    id SERIAL PRIMARY KEY NOT NULL,
+    nome TEXT,
+    email TEXT UNIQUE,
+    senha TEXT
+  );
