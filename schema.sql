@@ -1,12 +1,12 @@
 CREATE DATABASE Ceclimar
 
 DROP TABLE
-  IF EXISTS professores;
+  IF EXISTS agendamento_aulas;
 
 CREATE TABLE IF NOT EXISTS
-  professores (
+  agendamento_aulas (
     id SERIAL PRIMARY KEY NOT NULL,
-    nome TEXT,
+    id_professor INTEGER REFERENCES cadastro_professores (id),
     turma TEXT,
     quantidade_alunos INTEGER,
     quando_marcado TIMESTAMPTZ,
@@ -14,20 +14,20 @@ CREATE TABLE IF NOT EXISTS
   );
 
 DROP TABLE
-  IF EXISTS login_professores;
+  IF EXISTS cadastro_professores;
 
 CREATE TABLE IF NOT EXISTS
-  login_professores (
+  cadastro_professores (
     id SERIAL PRIMARY KEY NOT NULL,
     nome TEXT,
     email TEXT UNIQUE,
     senha TEXT
   );
 DROP TABLE
-  IF EXISTS login_admin;
+  IF EXISTS cadastro_admin;
 
 CREATE TABLE IF NOT EXISTS
-  login_admin (
+  cadastro_admin (
     id SERIAL PRIMARY KEY NOT NULL,
     nome TEXT,
     email TEXT UNIQUE,
