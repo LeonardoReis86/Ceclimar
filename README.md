@@ -5,6 +5,15 @@
 # Sobre
 Desenvolvimento de um sistema de marcação de aulas práticas de laboratório em Instituição de Ensino Superior.
 
+# Requisitos do cliente
+- Agenda para marcação de aulas práticas nos laboratorios;
+
+- Banco de dados com os protocolos(roteiros) de aulas;
+
+- Agendamento de aulas para usuarios  com no mínimo 10 dias de antecedência. Após isso somente presencial.
+
+- Quando a aula for marcada vem email de confirmação para os técnicos, e 2 dias antes da aula vem email para os técnicos com o protocolo daquela aula.
+
 
 # Colaboradores 
 ## Devs 👨‍💻👨‍💻
