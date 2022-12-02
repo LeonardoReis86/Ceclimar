@@ -6,13 +6,20 @@
 Desenvolvimento de um sistema de marcação de aulas práticas de laboratório em Instituição de Ensino Superior.
 
 # Requisitos do cliente
+
+- Criação de login para professores e funcionários do laboratório.
+
 - Agenda para marcação de aulas práticas nos laboratorios;
 
-- Banco de dados com os protocolos(roteiros) de aulas;
+- Cadastramento dos 3 laboratórios (Lab106, Lab117, Lab126);
 
-- Agendamento de aulas para usuarios  com no mínimo 10 dias de antecedência. Após isso somente presencial.
+- Limitar o agendamento máximo a 10 dias de antecedência do evento. Após somente presencial de acordo com disponibilidade;
 
-- Quando a aula for marcada vem email de confirmação para os técnicos, e 2 dias antes da aula vem email para os técnicos com o protocolo daquela aula.
+- Quando a aula for marcada enviar email de confirmação para os professor que realizou o agendamendo e funcionários do laboratório;
+
+- 2 dias antes da aula enviar email para os funcionários do laboratório com o protocolo da aula e materiais a serem separados.
+
+- Criação de um banco de dados relacionando disciplinas, professores, protocolos(roteiros) de aulas e materiais utilizados;
 
 
 # Colaboradores 
