@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LeonardoReis86/Ceclimar.git"

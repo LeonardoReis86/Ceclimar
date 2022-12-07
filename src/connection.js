@@ -1,11 +1,12 @@
-const { Pool } = require('pg');
+import pg from 'pg';
+const { Pool } = pg;
 
 const pool = new Pool({
-  user: postgres,
-  password: postgres,
-  host: localhost,
+  user: 'postgres',
+  password: 'postgres',
+  host: 'localhost',
   port: 5432,
-  database: Ceclimar
+  database: 'ceclimar'
 });
 
 /*
@@ -17,4 +18,4 @@ const query = (text, params) => {
   return pool.query(text, params);
 };
 
-module.exports = { query };
+export default { query };

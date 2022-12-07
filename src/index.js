@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 
 const app = express();
 
-const route = require('./routes');
+import routes from './routes.js';
 
 app.use(express.json());
 
-//app.use(route);
+app.use(routes);
 
 app.listen(process.env.PORT || 3000);
