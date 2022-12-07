@@ -1,4 +1,4 @@
-CREATE DATABASE Ceclimar
+CREATE DATABASE ceclimar
 
 DROP TABLE
   IF EXISTS cadastro_professores;
