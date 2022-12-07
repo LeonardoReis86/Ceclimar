@@ -1,13 +1,16 @@
-/*Aqui são os controladores dos agendamentos de aula
+/*Aqui são os controladores dos agendamentos de aula*/
+
+/* A fazer:
 - Precisa ainda pegar o id_professor utilizando o token de autenticação.
-- Adicionar uma trava no para_quando, para se houver outras aulas marcadas. 
+- Adicionar uma trava no para_quando, para se houver mais de três aulas marcadas.
+- Adicionar ao BD o campo turno, informando o turno agendado. 
 */
 /* 3 labs, podendo ser marcados ao mesmo tempo. O horário da marcação é o turno inteiro.*/
 
 import connection from '../connection.js';
 
 const registerSchedule = async (req, res) => {
-  const { turma, quantidade_alunos, quando_marcado, para_quando } = req.body;
+  const { turma, quantidade_alunos, para_quando } = req.body;
 
   if (!turma) {
     return res.status(400).json({ message: 'Campo turma é obrigatório' });
@@ -19,17 +22,14 @@ const registerSchedule = async (req, res) => {
     return res.status(400).json({
       message: 'Campo quantidade_alunos não pode ser negativo'
     });
-  } else if (!quando_marcado) {
-    return res
-      .status(400)
-      .json({ message: 'Campo quando_marcado é obrigatório' });
   } else if (!para_quando) {
     return res.status(400).json({ message: 'Campo para_quando é obrigatório' });
   }
   try {
+    const dataAtual = new Date();
     const { rowCount, rows } = await connection.query(
       'INSERT INTO agendamento_aulas (turma, quantidade_alunos, quando_marcado, para_quando) VALUES ($1, $2, $3, $4) RETURNING *',
-      [turma, quantidade_alunos, quando_marcado, para_quando]
+      [turma, quantidade_alunos, dataAtual, para_quando]
     );
     if (rowCount === 0) {
       return res
