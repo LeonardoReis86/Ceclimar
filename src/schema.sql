@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS
     disciplina TEXT,
     aula_pratica TEXT,
     turno TEXT,
-    laboratorio INT
+    laboratorio INT,
     quando_marcado TIMESTAMPTZ,
     para_quando TIMESTAMPTZ,
     observacao TEXT
