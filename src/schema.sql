@@ -1,5 +1,5 @@
 CREATE DATABASE ceclimar
-GO
+
 DROP TABLE
   IF EXISTS cadastro_professores;
 
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS
     email TEXT UNIQUE,
     senha TEXT
   );
-GO
+
 DROP TABLE
   IF EXISTS cadastro_admin;
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS
     email TEXT UNIQUE,
     senha TEXT
   );
-GO
+
   DROP TABLE
   IF EXISTS agendamento_aulas;
 
@@ -35,6 +35,6 @@ CREATE TABLE IF NOT EXISTS
     laboratorio INT,
     quando_marcado TIMESTAMPTZ,
     para_quando TIMESTAMPTZ,
-    observacao TEXT
+    observacao TEXT,
     CONSTRAINT fk_professor FOREIGN KEY(id_professor) REFERENCES cadastro_professores (id)
   );
