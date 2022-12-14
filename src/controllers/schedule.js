@@ -2,19 +2,12 @@
 
 /* A fazer:
 - Precisa ainda pegar o id_professor utilizando o token de autenticação.
-- Adicionar uma trava no para_quando, para se houver mais de três aulas marcadas. 
+- Adicionar uma trava no para_quando, para se houver mais de três aulas marcadas.
+- Adicionar mais validações, em disciplina, aula prática e turno, para evitar que quaisquer palavras passem.
 */
 /* 3 labs, podendo ser marcados ao mesmo tempo. O horário da marcação é o turno inteiro.*/
 
 import connection from '../connection.js';
-
-/* disciplina,
-    aula_pratica,
-    turno,
-    laboratorio 
-    quando_marcado,
-    para_quando,
-    observacao*/
 
 const registerSchedule = async (req, res) => {
   const {
@@ -40,19 +33,16 @@ const registerSchedule = async (req, res) => {
     return res.status(400).json({
       message: 'Campo laboratório é obrigatório'
     });
-  } else if (
-    laboratorio != '106' ||
-    laboratorio != '117' ||
-    laboratorio != '126'
-  ) {
+  } else if (laboratorio != 106 && laboratorio != 117 && laboratorio != 126) {
     return res.status(400).json({ message: 'Número do laboratório incorreto' });
   } else if (!para_quando) {
     return res.status(400).json({ message: 'Campo para_quando é obrigatório' });
   }
+
   try {
     const dataAtual = new Date();
     const { rowCount, rows } = await connection.query(
-      'INSERT INTO agendamento_aulas (disciplina, aula_pratica, turno, laboratorio, quando_marcado, para_quando, observacao) VALUES ($1, $2, $3, $4) RETURNING *',
+      'INSERT INTO agendamento_aulas (disciplina, aula_pratica, turno, laboratorio, quando_marcado, para_quando, observacao) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
       [
         disciplina,
         aula_pratica,
