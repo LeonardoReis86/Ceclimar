@@ -2,8 +2,7 @@
 
 /* A fazer:
 - Precisa ainda pegar o id_professor utilizando o token de autenticação.
-- Adicionar uma trava no para_quando, para se houver mais de três aulas marcadas.
-- Adicionar ao BD o campo turno, informando o turno agendado. 
+- Adicionar uma trava no para_quando, para se houver mais de três aulas marcadas. 
 */
 /* 3 labs, podendo ser marcados ao mesmo tempo. O horário da marcação é o turno inteiro.*/
 
@@ -41,6 +40,12 @@ const registerSchedule = async (req, res) => {
     return res.status(400).json({
       message: 'Campo laboratório é obrigatório'
     });
+  } else if (
+    laboratorio != '106' ||
+    laboratorio != '117' ||
+    laboratorio != '126'
+  ) {
+    return res.status(400).json({ message: 'Número do laboratório incorreto' });
   } else if (!para_quando) {
     return res.status(400).json({ message: 'Campo para_quando é obrigatório' });
   }
